@@ -34,6 +34,6 @@ class PRBankEvents(commands.Cog):
         await self.bot.get_channel(888531685975674890).send(f"[bank_wipe] {guild_id}")
 
     @commands.Cog.listener()
-    async def on_red_bank_prune_accounts(self, payload):
+    async def on_red_bank_prune_accounts(self, scope, pruned_users):
         await self.bot.get_channel(888531685975674890).send(f"[prune_accounts] {scope}, {pruned_users}")
     
