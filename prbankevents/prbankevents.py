@@ -17,23 +17,23 @@ class PRBankEvents(commands.Cog):
     def __init__(self, bot: Red) -> None:
         self.bot = bot
 
-    @commands.Cog.Listener()
+    @commands.Cog.listener()
     async def on_red_bank_set_global(self, state):
         await bot.get_channel(888531685975674890).send(f"[set_global] {state}")
 
-    @commands.Cog.Listener()
+    @commands.Cog.listener()
     async def on_red_bank_set_balance(self, payload):
         await bot.get_channel(888531685975674890).send(f"[set_balance] {payload.recipient_id} in {payload.guild_id}, old {payload.recipient_old_balance}, new {payload.recipient_new_balance}")
 
-    @commands.Cog.Listener()
+    @commands.Cog.listener()
     async def on_red_bank_transfer_credits(self, payload):
         await bot.get_channel(888531685975674890).send(f"[transfer_credits] in {payload.guild_id}, {payload.sender_id} ({payload.sender_new_balance}) sent {payload.transfer_amount} to {payload.recipient_id} ({payload.recipient_new_balance})")
 
-    @commands.Cog.Listener()
+    @commands.Cog.listener()
     async def on_red_bank_wipe(self, guild_id):
         await bot.get_channel(888531685975674890).send(f"[bank_wipe] {guild_id}")
 
-    @commands.Cog.Listener()
+    @commands.Cog.listener()
     async def on_red_bank_prune_accounts(self, payload):
         await bot.get_channel(888531685975674890).send(f"[prune_accounts] {scope}, {pruned_users}")
     
